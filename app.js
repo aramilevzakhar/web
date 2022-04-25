@@ -2,7 +2,12 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const { networkInterfaces } = require('os');
 // const fsPromise = require('fs/promise')
+
+const nets = networkInterfaces();
+console.log(nets)
+
 
 let movie_name = "";
 
