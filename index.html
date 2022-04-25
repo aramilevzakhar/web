@@ -35,10 +35,10 @@
 
 						<select class="form-select" v-model="movie">
 							<option>1.mkv</option>
-							<option selected>2.mp4</option>
+							<option>2.mp4</option>
 							<option>3.mp4</option>
 							<option>4.mp4</option>
-							<option>5.mp4</option>
+							<option selected>5.mp4</option>
 							<option>6.mp4</option>
 						</select>
 
@@ -80,8 +80,8 @@
 				*/
 				// alert(sending_data)
 
-				//let response = await fetch('http://192.168.224.26:8000/save', {
-				let response = await fetch('http://localhost:8000/save', {
+				let response = await fetch('http://192.168.224.26:8000/save', {
+				//let response = await fetch('http://localhost:8000/save', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json;charset=utf-8'
@@ -90,7 +90,7 @@
 
 				}).then(response => response.json());
 
-				location.reload();
+				// location.reload();
 				window.location.reload();
 
 			}
