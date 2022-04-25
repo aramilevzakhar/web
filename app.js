@@ -24,7 +24,7 @@ app.get("/video1", function (req, res) {
 		res.status(400).send("Requires Range header");
 	}
 	console.log('movie_name: ', movie_name)
-	const videoPath = movie_name;
+	const videoPath = "1.mp4";
 	console.log(videoPath)
 
 	const videoSize = fs.statSync(videoPath).size;
