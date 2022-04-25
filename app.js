@@ -18,6 +18,7 @@ app.get("/video1", function (req, res) {
 	if (!range) {
 		res.status(400).send("Requires Range header");
 	}
+	console.log(movie_name)
 	const videoPath = movie_name;
 	console.log(videoPath)
 
