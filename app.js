@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const bodyParser = require("body-parser");
 // const fsPromise = require('fs/promise')
 
-
+let movie_name = "";
 
  // more code will go in here just befor the listening function
 
@@ -17,7 +18,9 @@ app.get("/video1", function (req, res) {
 	if (!range) {
 		res.status(400).send("Requires Range header");
 	}
-	const videoPath = "./466.mkv";
+	const videoPath = movie_name;
+	console.log(videoPath)
+
 	const videoSize = fs.statSync(videoPath).size;
 
 
@@ -38,6 +41,40 @@ app.get("/video1", function (req, res) {
 	videoStream.pipe(res)
 
 });
+
+app.use(bodyParser.json());
+app.post("/save", async (request, response) => {
+
+  console.log(request.body);
+
+	text = request.body['movie'];
+	movie_name = text;
+	console.log(text);
+
+  console.log(request.headers['user-agent']);
+
+  if (!request.body) return response.sendStatus(400);
+
+
+
+
+  //response.send(text);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(8000, function () {
 	console.log("Listening on port 8000!");
