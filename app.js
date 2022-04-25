@@ -54,6 +54,9 @@ app.post("/save", async (request, response) => {
 
   console.log(request.headers['user-agent']);
 
+	var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+	console.log(ip);
+
   if (!request.body) return response.sendStatus(400);
 
 
