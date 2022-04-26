@@ -4,14 +4,15 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const { networkInterfaces } = require('os');
 const path = require('path');
+const {requestTime, logger} = require('./middlewares');
 
-const nets = networkInterfaces();
-console.log(nets)
+// const nets = networkInterfaces();
+// console.log(nets)
 
 const PORT = 8000
-
+console.log('Server started...')
 // app.use(express.static(path.resolve(__dirname, 'static')));
-app.use(express.static(__dirname + '/static'))
+app.use(express.static(__dirname))
 
 
 let movie_name = "";
@@ -24,14 +25,21 @@ app.get("/", (req, res) => {
 })
 */
 
+app.get("/download", (req, res) => {
+	res.download(path.resolve(__dirname, '1.mp4'));
+});
+
 
 app.get("/video", (req, res) => {
 	const range = req.headers.range;
+	console.log(range)
 	if (!range) {
 		res.status(400).send("Requires Range header");
 	}
+
+
 	console.log('movie_name: ', movie_name)
-	const videoPath = "static\/1.mp4";
+	const videoPath = "static/1.mp4";
 	console.log(videoPath)
 	const videoSize = fs.statSync(videoPath).size;
 	const CHUNK_SIZE = 10 ** 6;
