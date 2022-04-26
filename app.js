@@ -3,18 +3,27 @@ const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const { networkInterfaces } = require('os');
-
+const path = require('path');
 
 const nets = networkInterfaces();
 console.log(nets)
 
 const PORT = 8000
 
+// app.use(express.static(path.resolve(__dirname, 'static')));
+app.use(express.static(__dirname + '/static'))
+
+
 let movie_name = "";
+
+/*
 app.get("/", (req, res) => {
 	console.log(req)
-	res.sendFile(__dirname + "/index.html");
+	// res.sendFile(__dirname + "/index.html");
+	res.sendFile(path.resolve(__dirname, 'static', 'index.html'));
 })
+*/
+
 
 app.get("/video", (req, res) => {
 	const range = req.headers.range;
@@ -22,13 +31,9 @@ app.get("/video", (req, res) => {
 		res.status(400).send("Requires Range header");
 	}
 	console.log('movie_name: ', movie_name)
-
-	const videoPath = "1.mp4";
+	const videoPath = "static\/1.mp4";
 	console.log(videoPath)
-
 	const videoSize = fs.statSync(videoPath).size;
-
-	
 	const CHUNK_SIZE = 10 ** 6;
 	const start = Number(range.replace(/\D/g, ""))
 	const end = Math.min(start + CHUNK_SIZE, videoSize - 1)
