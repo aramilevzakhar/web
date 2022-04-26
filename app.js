@@ -3,33 +3,32 @@ const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const { networkInterfaces } = require('os');
-// const fsPromise = require('fs/promise')
+
 
 const nets = networkInterfaces();
 console.log(nets)
 
+const PORT = 8000
 
 let movie_name = "";
-
- // more code will go in here just befor the listening function
-
-
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
+	console.log(req)
 	res.sendFile(__dirname + "/index.html");
 })
 
-app.get("/video1", function (req, res) {
+app.get("/video", (req, res) => {
 	const range = req.headers.range;
 	if (!range) {
 		res.status(400).send("Requires Range header");
 	}
 	console.log('movie_name: ', movie_name)
+
 	const videoPath = "1.mp4";
 	console.log(videoPath)
 
 	const videoSize = fs.statSync(videoPath).size;
 
-
+	
 	const CHUNK_SIZE = 10 ** 6;
 	const start = Number(range.replace(/\D/g, ""))
 	const end = Math.min(start + CHUNK_SIZE, videoSize - 1)
@@ -71,22 +70,8 @@ app.post("/save", async (request, response) => {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(8000, function () {
-	console.log("Listening on port 8000!");
+app.listen(PORT, () => {
+	console.log(`Listening on port ${PORT}!`);
 });
 
 
