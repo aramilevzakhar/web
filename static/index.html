@@ -25,7 +25,7 @@
 		<div class="container-fluid">
 			<div class="row">
 
-				
+
 				<div class='bg-info text-center w-100'>
 					<p>私のサイト</p>
 				</div>	
@@ -64,16 +64,6 @@
 			send1: async () => {
 				sending_data = { 'movie': app.movie };
 
-
-				/*
-				if (sending_data.url.length < 3) {
-					alert("Размер ссылки слишком мал: " + sending_data.url.length);
-
-				} else if (sending_data.url.length > 255) {
-					alert("Размер ссылки слишком велик: " + sending_data.url.length);
-
-				*/
-				// alert(sending_data)
 
 				let response = await fetch(`http://192.168.224.26:8000/save`, {
 					//let response = await fetch('http://localhost:8000/save', {
