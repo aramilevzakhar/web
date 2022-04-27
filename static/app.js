@@ -50,11 +50,16 @@ app.get("/", (req, res) => {
 })
 */
 
+
+
 app.get("/download", (req, res) => {
 	res.download(path.resolve(__dirname, '1.mp4'));
 });
 let acc = 0;
 
+app.get("/about", (req, res) => {
+	res.sendFile(__dirname + "/about.html");
+});
 
 const name1 = 3333333;
 app.get("/video", function a1(req, res) {
@@ -98,6 +103,11 @@ app.get("/video", function a1(req, res) {
 	console.log(`videoStream ${videoStream.end}`)
 
 });
+
+
+
+
+
 /*
 set_tim = setTimeout(()=>{
 	console.log("Hello World")
@@ -109,11 +119,29 @@ clearTimeout(set_tim);
 // 	console.log("私はバカです。")
 // }, 100);
 
+function tick(p1, p2) {
+	console.log(`hello ${p1}, ${p2}`);
+}
+// setTimeout(tick, 3000, "anime", "porno");
+setInterval(tick, 3000, "anime", "変態");
+// let timerId = setTimeout(function tick() {
+// 	console.log('Hi');
+//   timerId = setTimeout(tick, 2000); // (*)
 
-let timerId = setTimeout(function tick() {
-	console.log('Hi');
-  timerId = setTimeout(tick, 2000); // (*)
-}, 2000);
+
+
+// }, 2000);
+
+let start = Date.now();
+let times = [];
+
+setTimeout(function run() {
+  times.push(Date.now() - start); // запоминаем задержку от предыдущего вызова
+
+  if (start + 100 < Date.now()) console.log(times); // показываем задержку через 100 мс
+  else setTimeout(run); // если нужно ещё запланировать
+});
+
 
 app.use(bodyParser.json());
 app.post("/save", async (request, response) => {
