@@ -20,8 +20,8 @@ app.use(function(request, response, next){
 
 // const PORT = 8000
 console.log('Server started...')
-// app.use(express.static(path.resolve(__dirname, 'static')));
-app.use(express.static(__dirname))
+app.use(express.static(path.resolve(__dirname, 'static')));
+// app.use(express.static(__dirname + '/static'))
 
 
 // app.set('port', process.env.PORT || 8000)
@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
 
 
 app.get("/download", (req, res) => {
-	res.download(path.resolve(__dirname, '1.mp4'));
+	res.download(path.resolve(__dirname, 'static/1.mp4'));
 });
 let acc = 0;
 
