@@ -23,7 +23,22 @@ console.log('Server started...')
 app.use(express.static(path.resolve(__dirname, 'static')));
 // app.use(express.static(__dirname + '/static'))
 
+app.get("/download", (req, res) => {
+	res.download(path.resolve(__dirname, '/static/1.mp4'));
+});
+let acc = 0;
 
+app.get("/about", (req, res) => {
+	res.sendFile(__dirname + "/static/about.html");
+});
+
+app.get("/pictures", (req, res) => {
+	res.sendFile(__dirname + "/static/Pictures.html");
+});
+
+app.get("/price", (req, res) => {
+	res.sendFile(__dirname + "/static/price.html");
+});
 // app.set('port', process.env.PORT || 8000)
 // console.log(process.env.PORT)
 const PORT = process.env.PORT ?? 8000
@@ -52,14 +67,7 @@ app.get("/", (req, res) => {
 
 
 
-app.get("/download", (req, res) => {
-	res.download(path.resolve(__dirname, 'static/1.mp4'));
-});
-let acc = 0;
 
-app.get("/about", (req, res) => {
-	res.sendFile(__dirname + "/about.html");
-});
 
 const name1 = 3333333;
 app.get("/video", function a1(req, res) {

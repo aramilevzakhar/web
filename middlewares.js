@@ -3,5 +3,9 @@ function requestTime(req, res, next) {
   next()
 }
 
+function b() {
+	console.log('hello')
+}
+
 function logger(req, res, next) {};
 
