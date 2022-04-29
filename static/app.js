@@ -6,7 +6,7 @@ const { networkInterfaces } = require('os');
 const path = require('path');
 const { requestTime, logger } = require('./middlewares');
 const { argv } = require("process");
-const { clear } = require("console");
+const a1aa = require("xlsx");
 
 // const nets = networkInterfaces();
 // console.log(nets)
@@ -25,7 +25,7 @@ app.use(express.static(__dirname))
 
 
 // app.set('port', process.env.PORT || 8000)
-console.log(process.env.PORT)
+// console.log(process.env.PORT)
 const PORT = process.env.PORT ?? 8000
 /*
 app.use(function(request, response, next){
@@ -63,15 +63,17 @@ app.get("/about", (req, res) => {
 
 const name1 = 3333333;
 app.get("/video", function a1(req, res) {
-	argv.forEach((value, index) => {
-		console.log(`Anime is ${value}, ${index}`);	
-	})	
+	// argv.forEach((value, index) => {
+		// console.log(`Anime is ${value}, ${index}`);	
+	// })	
 	const range = req.headers.range;
 		
 	// console.log(req, res)
-	console.log(`this is: ${name1}`)	
+	// console.log(`this is: ${name1}`)	
 
-	console.log(range);
+	// console.log(range);
+
+	
 	if (!range) {
 		res.status(400).send("Requires Range header");
 	}
@@ -80,7 +82,7 @@ app.get("/video", function a1(req, res) {
 	//console.log(`movie_name: ${movie_name}, index: ${acc}, name ${name}`);
 
 	const videoPath = "static/1.mp4";
-	console.log(videoPath);
+	// console.log(videoPath);
 
 	const videoSize = fs.statSync(videoPath).size;
 	const CHUNK_SIZE = 10 ** 6;
@@ -95,12 +97,13 @@ app.get("/video", function a1(req, res) {
 	};
 
 	res.writeHead(206, headers);
+	console.log(headers);
 	const videoStream = fs.createReadStream(videoPath, { start, end });
 
-	console.log(`videoStream ${videoStream.end}`)
+	// console.log(`videoStream ${videoStream.end}`)
 	videoStream.pipe(res);
 
-	console.log(`videoStream ${videoStream.end}`)
+	// console.log(`videoStream ${videoStream.end}`)
 
 });
 
@@ -119,11 +122,11 @@ clearTimeout(set_tim);
 // 	console.log("私はバカです。")
 // }, 100);
 
-function tick(p1, p2) {
-	console.log(`hello ${p1}, ${p2}`);
-}
+// function tick(p1, p2) {
+// 	console.log(`hello ${p1}, ${p2}`);
+// }
 // setTimeout(tick, 3000, "anime", "porno");
-setInterval(tick, 3000, "anime", "変態");
+// setInterval(tick, 3000, "anime", "変態");
 // let timerId = setTimeout(function tick() {
 // 	console.log('Hi');
 //   timerId = setTimeout(tick, 2000); // (*)
@@ -132,15 +135,15 @@ setInterval(tick, 3000, "anime", "変態");
 
 // }, 2000);
 
-let start = Date.now();
-let times = [];
+// let start = Date.now();
+// let times = [];
 
-setTimeout(function run() {
-  times.push(Date.now() - start); // запоминаем задержку от предыдущего вызова
+// setTimeout(function run() {
+//   times.push(Date.now() - start); // запоминаем задержку от предыдущего вызова
 
-  if (start + 100 < Date.now()) console.log(times); // показываем задержку через 100 мс
-  else setTimeout(run); // если нужно ещё запланировать
-});
+//   if (start + 100 < Date.now()) console.log(times); // показываем задержку через 100 мс
+//   else setTimeout(run); // если нужно ещё запланировать
+// });
 
 
 app.use(bodyParser.json());
