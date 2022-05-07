@@ -3,7 +3,7 @@
 *.avi
 *.ogv
 node_modules/
-*.jpg
+/static/image
 *.png
 *.jpeg
 *.mkv

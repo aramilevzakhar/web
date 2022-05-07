@@ -32,6 +32,9 @@ app.get("/about", (req, res) => {
 	res.sendFile(__dirname + "/static/about.html");
 });
 
+app.get("/study", (req, res) => {
+	res.sendFile(__dirname + "/static/study.html");
+})
 app.get("/pictures", (req, res) => {
 	res.sendFile(__dirname + "/static/Pictures.html");
 });
@@ -75,12 +78,6 @@ app.get("/video", function a1(req, res) {
 		// console.log(`Anime is ${value}, ${index}`);	
 	// })	
 	const range = req.headers.range;
-		
-	// console.log(req, res)
-	// console.log(`this is: ${name1}`)	
-
-	// console.log(range);
-
 	
 	if (!range) {
 		res.status(400).send("Requires Range header");
