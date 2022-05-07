@@ -23,19 +23,39 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col" id="app">
         <form action="" class="form-control d-flex-column">
-          <input class="form-control mb-1" type="search" placeholder="First name" aria-label="Search">
-          <input class="form-control mb-1" type="search" placeholder="Middle name" aria-label="Search">
-          <input class="form-control mb-1" type="search" placeholder="Last name" aria-label="Search">
-          <input class="form-control mb-1" type="search" placeholder="Age" aria-label="Search">
+          <label>Какое научное направление вам больше всего заходит?</label>
+          <!-- <label>{{ message }}</label> -->
+          <input v-model="question1" class="form-control mb-1" type="search" placeholder="First name" aria-label="Search">
+          <!-- <p>{{ message }}</p> -->
+          
+          <label v-show="question1 == 4">Вы аниме смотрите?</label>
+          <input v-model="question2" v-show="question1 == 4" class="form-control mb-1" type="search" placeholder="Middle name" aria-label="Search">
+
+
+          <label v-show="question2 == 'да'">Какое вам нравится?</label>
+          <input v-model="question3" v-show="question2 == 'да'" class="form-control mb-1" type="search" placeholder="Last name" aria-label="Search">
+          
+          <!-- <input class="form-control mb-1" type="search" placeholder="Age" aria-label="Search">
           <input class="form-control mb-1" type="search" placeholder="Sex" aria-label="Search">
           <input class="form-control mb-1" type="search" placeholder="Address" aria-label="Search">
-          <button class="btn btn-outline-success w-100" type="submit">Search</button>
+          <button class="btn btn-outline-success w-100" type="submit">Search</button> -->
         </form>
 
       </div>
     </div>
   </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        question1: '',
+        question2: '',
+        question3: '',
+        question4: '',
+      }
+    });
+  </script>
 </body>
 </html>

@@ -18,8 +18,10 @@
 	</head>
 
 
-				
+	<!-- <h1 v-show="ok">Hello!</h1> -->
 	<body class="bg-light d-flex flex-column">			
+		<!-- <div id="bod"><p>{{ pos }}</p></div> -->
+		
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 			<div class="container">				
 				<a class="navbar-brand" href="#">Navbar</a>
@@ -37,6 +39,12 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/price">Pricing</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/test">Test and practice</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/study">My study</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/about" tabindex="-1" aria-disabled="false">About</a>
@@ -85,7 +93,7 @@
 		<footer class="text-center pt-4 my-md-5 pt-md-5 border-top">
 			<div class="row">
 				<div class="col-6 col-md">
-					<h5>Web dev</h5>
+					<h5>About</h5>
 					<ul class="list-unstyled text-small">
 						<li><a href="" class="link-secondary">Blog</a></li>
 						<li><a href="" class="link-secondary">Blog</a></li>
@@ -95,27 +103,7 @@
 					</ul>
 				</div>
 				<div class="col-6 col-md">
-					<h5>Web dev</h5>
-					<ul class="list-unstyled text-small">
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-					</ul>
-				</div>
-				<div class="col-6 col-md">
-					<h5>Web dev</h5>
-					<ul class="list-unstyled text-small">
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-						<li><a href="" class="link-secondary">Blog</a></li>
-					</ul>
-				</div>
-				<div class="col-6 col-md">
-					<h5>Web dev</h5>
+					<h5>Support</h5>
 					<ul class="list-unstyled text-small">
 						<li><a href="" class="link-secondary">Blog</a></li>
 						<li><a href="" class="link-secondary">Blog</a></li>
@@ -155,31 +143,52 @@
 	</script> -->
 
 	<script>
-		var example2 = new Vue({
-			el: '#example-2',
+		// pos1.onclick = function(event) {
+		// 	// вывести тип события, элемент и координаты клика
+		// 	// alert(event.type + " на " + event.currentTarget);
+		// 	alert("Координаты: " + event.clientX + ":" + event.clientY);
+			
+		// };
+		var app = new Vue({
+			el: '#bod',
 			data: {
-				parentMessage: 'Parent',
-				items: [
-					{ message: 'Anime' },
-					{ message: 'Porno' },
-					{ message: 'Movie' },
-					{ message: 'Linux' } 
-				],
-				animations: [
-					{ anime: 'Stains;gate (シュタインズ・ゲート)' },
-					{ anime: 'Gosick (ゴシック-)' },
-					{ anime: 'Redo of healer (回復術士のやり直し)' },
-					{ anime: 'The Town Where Only I Am Missing (僕だけがいない街)' },
-				]
-
-			},
-			methods: {
-				govno: function () {
-					console.log("Hello")
-					alert("What's happening?")
-				}
+				pos: ''
 			}
-		});
+		})
+		// var e123 = new Vue({
+		// 	el: '#pos1',
+
+		// 	data: {
+		// 		ppp1: ""
+		// 	}
+
+		// })
+		
+		// var example2 = new Vue({
+		// 	el: '#example-2',
+		// 	data: {
+		// 		parentMessage: 'Parent',
+		// 		items: [
+		// 			{ message: 'Anime' },
+		// 			{ message: 'Porno' },
+		// 			{ message: 'Movie' },
+		// 			{ message: 'Linux' } 
+		// 		],
+		// 		animations: [
+		// 			{ anime: 'Stains;gate (シュタインズ・ゲート)' },
+		// 			{ anime: 'Gosick (ゴシック-)' },
+		// 			{ anime: 'Redo of healer (回復術士のやり直し)' },
+		// 			{ anime: 'The Town Where Only I Am Missing (僕だけがいない街)' },
+		// 		]
+
+		// 	},
+		// 	methods: {
+		// 		govno: function () {
+		// 			console.log("Hello")
+		// 			alert("What's happening?")
+		// 		}
+		// 	}
+		// });
 	</script> 
 </html>
 
