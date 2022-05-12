@@ -23,6 +23,20 @@ console.log('Server started...')
 app.use(express.static(path.resolve(__dirname, 'static')));
 // app.use(express.static(__dirname + '/static'))
 
+
+let urlencodedParser = express.urlencoded({extended: false});
+
+
+app.get("/postform", (req, res) => {
+	res.sendFile(__dirname + "/static/something_form.html");
+})
+app.post("/postform", urlencodedParser, function (request, response) {
+	if(!request.body) return response.sendStatus(400);
+	console.log(request.body);
+	response.send(`${request.body.userName} - ${request.body.userAge}`);
+});
+
+
 app.get("/download", (req, res) => {
 	res.download(path.resolve(__dirname, '/static/1.mp4'));
 });
@@ -74,9 +88,6 @@ app.get("/", (req, res) => {
 
 const name1 = 3333333;
 app.get("/video", function a1(req, res) {
-	// argv.forEach((value, index) => {
-		// console.log(`Anime is ${value}, ${index}`);	
-	// })	
 	const range = req.headers.range;
 	
 	if (!range) {

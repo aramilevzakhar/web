@@ -24,7 +24,7 @@
 		
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 			<div class="container">				
-				<a class="navbar-brand" href="#">Navbar</a>
+				<a class="navbar-brand" href="/postform">something</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -64,28 +64,15 @@
 				<svg class="bi" width="32" height="32" fill="currentColor">
 					<use xlink:href="bootstrap-icons.svg#heart-fill"/>
 				</svg>
-				<div class="d-flex col">
-					<div class="list-group me-auto rounded-0 w-50">
-						<a href="#" class="list-group-item list-group-item-action">Stains;gate (シュタインズ・ゲート)</a>
-						<a href="#" class="list-group-item list-group-item-action">Gosick (ゴシック-)</a>
-						<a href="#" class="list-group-item list-group-item-action">Redo of healer (回復術士のやり直し)</a>
-						<a href="#" class="list-group-item list-group-item-action">The Town Where Only I Am Missing (僕だけがいない街)</a>
-						<a href="#" class="list-group-item list-group-item-action">Madoka Magika (魔法少女　まどか　まがか)</a>
-					</div>
-					<!-- <div>
-						<div class="list-group me-auto rounded-0 w-50" v-for="(item, index) in animation">
-							{{ parentMessage }} - {{ index }} - {{ item.anime }}
-						</div>
-					</div> -->
-					<!-- <li v-for="(item, index) in smeti">
-						<a class="dropdown-item" href="#">
-							{{ parentMessage }} - {{ index }} - {{ item.message }}
-						</a>
-					</li> -->
+				<div id="example" class="d-flex col">
 
-					<video class="w-50" controls autoplay>
+
+					<video class="w-50" controls autoplay muted>
 						<source src="/video" type="video/mp4" />
 					</video>
+					<div class="w-50 bg-primary">
+						<button></button>
+					</div>
 	
 				</div>
 			</div>
@@ -150,9 +137,20 @@
 			
 		// };
 		var app = new Vue({
-			el: '#bod',
+			el: '#example',
 			data: {
-				pos: ''
+				counter: ''
+			},
+			methods: {
+				anime (res) {
+					console.log(res);
+					fetch("http://localhost:8000/video").then(async response => {
+						const data = await response.json();
+						console.log(data);
+					});
+
+
+				}
 			}
 		})
 		// var e123 = new Vue({
